@@ -2,8 +2,8 @@
 
 -   Sudah tersetting koneksi oracle
 
-## Penjelasan langkah manual
-1. Pastikan oracle sudah siap digunakan (require: extensi oci_8, instant_client, enable extension oci_8 di php.ini) <a href="https://github.com/hajir09/tutorial-instalasi-oracle">Tutorial installasi By Hajir09</a>
+### Penjelasan langkah manual
+1. Pastikan oracle sudah siap digunakan (require: extensi oci_8, instant_client, enable extension oci_8 di php.ini) <a href="https://github.com/hajir09/tutorial-instalasi-oracle" target="_blank">Tutorial installasi By Hajir09</a>
 2. Install Laravel :
    ```bash
    composer create-project --prefer-dist laravel/laravel:^9.0 nama-proyek-anda
@@ -31,6 +31,7 @@
 6. Setelah itu nyalakan server <code>php artisan serve</code> kemudian buat code untuk test koneksi ke oracle, sebagai contoh : <br>
    ```php
    // Route | \routes\web.php
+   
        Route::get('/', function () {
         try {
             DB::connection()->getPdo();
