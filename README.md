@@ -27,7 +27,7 @@
       $this->app->register(\Yajra\Oci8\Oci8ServiceProvider::class);
        ```
      
-5. Mengatur <a href="https://github.com/hajir09/install-laravel9-oracle/blob/master/.env.example">.env seperti ini</a>
+5. Mengatur <a href="https://github.com/hajir09/install-laravel9-oracle/blob/master/.env.example" target="_blank">.env seperti ini</a>
 6. Setelah itu nyalakan server <code>php artisan serve</code> kemudian buat code untuk test koneksi ke oracle, sebagai contoh : <br>
    ```php
    // Route | \routes\web.php
