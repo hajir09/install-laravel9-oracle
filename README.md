@@ -2,6 +2,53 @@
 
 -   Sudah tersetting koneksi oracle
 
+## Penjelasan langkah manual
+1. Pastikan oracle sudah siap digunakan (require: extensi oci_8, instant_client, enable extension oci_8 di php.ini) <a href="https://github.com/hajir09/tutorial-instalasi-oracle">Tutorial installasi By Hajir09</a>
+2. Install Laravel :
+   ```bash
+   composer create-project --prefer-dist laravel/laravel:^9.0 nama-proyek-anda
+   ```
+4. Install oci_8 untuk laravel by yajra 
+   - ```bash
+     composer require yajra/laravel-oci8:^9.0
+     ```
+   - Buka file <code>config/app.php</code> kemudian cari bagian service provider, lalu tambahkan ini.
+      ```php
+      'providers' => [
+      // ...
+      Yajra\Oci8\Oci8ServiceProvider::class,
+      ],
+      ```
+   - ```bash
+     php artisan vendor:publish --tag=oracle
+     ```
+   - Buka file <code>\app\Providers\AppServiceProvider.php</code> dan pada method <code>register()</code> tambahkan ini : <br>
+       ```php
+      $this->app->register(\Yajra\Oci8\Oci8ServiceProvider::class);
+       ```
+     
+5. Mengatur <a href="https://github.com/hajir09/install-laravel9-oracle/blob/master/.env.example">.env seperti ini</a>
+6. Setelah itu nyalakan server <code>php artisan serve</code> kemudian buat code untuk test koneksi ke oracle, sebagai contoh : <br>
+   ```php
+   // Route | \routes\web.php
+       Route::get('/', function () {
+        try {
+            DB::connection()->getPdo();
+            echo 'Koneksi ke database Oracle berhasil!';
+        } catch (\Exception $e) {
+        return 'Gagal terhubung ke database Oracle: ' . $e->getMessage();
+        }
+        return view('welcome');
+    }); 
+   ```
+
+Sumber : https://yajrabox.com/docs/laravel-oci8/9.0
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
